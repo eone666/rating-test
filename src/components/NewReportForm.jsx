@@ -7,7 +7,7 @@ import SecondStep from "./FormSteps/SecondStep";
 import FinalStep from "./FormSteps/FinalStep";
 import FormProgress from "./FormProgress";
 
-const NewReportForm = ({ submitHandler }) => {
+const NewReportForm = ({ submitHandler, fetchError }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [statusDict, setStatusDict] = useState([]);
 
@@ -31,7 +31,7 @@ const NewReportForm = ({ submitHandler }) => {
       case 1:
         return <SecondStep errors={errors} touched={touched} />;
       case 2:
-        return <FinalStep errors={errors} />;
+        return <FinalStep errors={errors} fetchError={fetchError} />;
       default:
         return <FirstStep errors={errors} touched={touched} />;
     }
