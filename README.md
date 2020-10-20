@@ -1,68 +1,54 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Тестовое задание rating.kz
 
-## Available Scripts
+## ТЗ
 
-In the project directory, you can run:
+Нужно реализовать реестр отчетов по объекту строительства, реестр фильтруется по объекту.
+Далее нужно добавить кнопку Добавить и форму по добавлению отчета.
+Форма по добавлению делиться на 3 шага, каждый шаг отображается на всю страницу, если ошибок нет то собираем все данные со всех шагов и единой моделькой отправляем в апи.
+API по справочникам есть в контроллере Home, механизм по сохнранению не нужно делать, ваша задача сверстать с помощью бутстрапа реестр и форму, обратиться к существующим апи и проверить правильность заполнения, показать список ошибок при их наличии.
 
-### `yarn start`
+Фильтр по объекту
+Реестр отчетов по строительному объекту(Наименование, Описание, Дата, Статус, Есть или нет замечания)
+Форма по добавлению отчета по объекту
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Шаг 1
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+-Наименование*
+-Описание
+-Дата*
+-Статус(В разработке, Принят)\*
 
-### `yarn test`
+### Шаг2
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-Реестр замечаний (Категория, Дата, Описание)
 
-### `yarn build`
+### Шаг3
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Кнопка подтвердить и ошибки если таковые имеются
+  \*-обязательные поля
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Backend API
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### для реестра
 
-### `yarn eject`
+get 178.90.223.230:6132/home/GetObj_JSON
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### справочник статусов
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+get 178.90.223.230:6132/home/GetStatus_JSON
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### для получения информации с реестра по конкретной записи переход
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+get 178.90.223.230:6132/home/GetJournal_JSON?id=
 
-## Learn More
+### отправка запроса на сохранение, модель смотреть как GetJournal_JSON
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+post 178.90.223.230:6132/home/SetData
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Usage
 
-### Code Splitting
+`$ yarn install` - install dependencies
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+`$ yarn start` - start dev server
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+`$ yarn build` - get production build
