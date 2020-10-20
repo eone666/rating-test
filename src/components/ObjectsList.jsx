@@ -10,7 +10,7 @@ const ObjectsList = ({ data }) => {
         <tr>
           <th>#</th>
           <th>Name</th>
-          <th>Report</th>
+          <th>Reports</th>
         </tr>
       </thead>
       <tbody>
@@ -19,7 +19,7 @@ const ObjectsList = ({ data }) => {
             <td>{e.Id}</td>
             <td>{e.Name}</td>
             <td>
-              <Link to={`/report/${e.Id}`}>Open</Link>
+              <Link to={`/reports/${e.Id}`}>Open</Link>
             </td>
           </tr>
         ))}

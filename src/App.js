@@ -4,7 +4,8 @@ import { Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Home from "./pages/Home";
-import Report from "./pages/Report";
+import Reports from "./pages/Reports";
+import NewReport from "./pages/NewReport";
 import Header from "./components/Header";
 
 function App() {
@@ -16,7 +17,8 @@ function App() {
           <Container>
             <Switch>
               <Route path="/" exact component={Home} />
-              <Route path="/report/:id" exact component={Report} />
+              <Route path="/reports/:id" exact component={Reports} />
+              <Route path="/newreport/:id" exact component={NewReport} />
             </Switch>
           </Container>
         </main>

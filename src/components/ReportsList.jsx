@@ -13,7 +13,7 @@ const ObjectsList = ({ data }) => {
           <th>Info</th>
           <th>Status</th>
           <th>Date</th>
-          <th>Has remarks</th>
+          <th>Remark</th>
         </tr>
       </thead>
       <tbody>
@@ -24,7 +24,7 @@ const ObjectsList = ({ data }) => {
             <td>{e.Info}</td>
             <td>{e.StatusName}</td>
             <td>{moment(e.Date).toDate().toString()}</td>
-            <td>{e.isRemark ? "+" : "-"}</td>
+            <td>{e.IsRemark ? "+" : "-"}</td>
           </tr>
         ))}
       </tbody>
