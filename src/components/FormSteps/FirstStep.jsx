@@ -29,7 +29,7 @@ const FirstStep = ({ errors, touched, statusDict, values }) => (
       <Form.Control
         as="select"
         name="status"
-        value={values.status}
+        value={values.status ? values.status : null}
         defaultValue="null"
       >
         <option value="null" disabled>
