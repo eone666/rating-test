@@ -18,7 +18,7 @@ const NewReportForm = ({ submitHandler, fetchError }) => {
       .catch((err) => console.log(err));
   }, []);
 
-  const renderStep = (step, errors, touched, statusDict) => {
+  const renderStep = (step, errors, touched, statusDict, values) => {
     switch (step) {
       case 0:
         return (
@@ -26,10 +26,11 @@ const NewReportForm = ({ submitHandler, fetchError }) => {
             errors={errors}
             touched={touched}
             statusDict={statusDict}
+            values={values}
           />
         );
       case 1:
-        return <SecondStep errors={errors} touched={touched} />;
+        return <SecondStep errors={errors} values={values} touched={touched} />;
       case 2:
         return <FinalStep errors={errors} fetchError={fetchError} />;
       default:
@@ -71,7 +72,7 @@ const NewReportForm = ({ submitHandler, fetchError }) => {
           submitHandler(values);
         }}
       >
-        {({ errors, touched, handleSubmit, handleChange }) => (
+        {({ errors, touched, handleSubmit, handleChange, values }) => (
           <Form
             onSubmit={(e) => {
               e.preventDefault();
@@ -80,7 +81,7 @@ const NewReportForm = ({ submitHandler, fetchError }) => {
             onChange={handleChange}
           >
             <FormProgress errors={errors} currentStep={currentStep} />
-            {renderStep(currentStep, errors, touched, statusDict)}
+            {renderStep(currentStep, errors, touched, statusDict, values)}
           </Form>
         )}
       </Formik>
